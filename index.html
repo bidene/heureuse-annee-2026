@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heureuse Année 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a2342 0%, #1b3b6f 30%, #2a4d8f 70%, #3a6bc5 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+            max-width: 90%;
+            animation: containerAppear 1.5s ease-out forwards;
+        }
+        
+        @keyframes containerAppear {
+            0% { opacity: 0; transform: translateY(100px) scale(0.8); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px #ffd700, 0 0 20px #ff9900;
+            letter-spacing: 4px;
+            animation: titleGlow 3s infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ff9900; }
+            50% { text-shadow: 0 0 30px #ff9900, 0 0 40px #ff5500, 0 0 50px #ff0000; }
+        }
+        
+        .year-number {
+            display: inline-block;
+            animation: numberBounce 0.8s ease infinite alternate;
+        }
+        
+        .year-number:nth-child(1) { animation-delay: 0.1s; color: #ff6b6b; }
+        .year-number:nth-child(2) { animation-delay: 0.2s; color: #4ecdc4; }
+        .year-number:nth-child(3) { animation-delay: 0.3s; color: #ffd166; }
+        .year-number:nth-child(4) { animation-delay: 0.4s; color: #06d6a0; }
+        
+        @keyframes numberBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-30px); }
+        }
+        
+        .message {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+            animation: messagePulse 2s infinite alternate;
+        }
+        
+        @keyframes messagePulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .signature {
+            font-size: 1.2rem;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #2c3e50, #34495e);
+            border-radius: 50px;
+            display: inline-block;
+            color: #ecf0f1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: signatureFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes signatureFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .fireworks-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px;
+            animation: explode 1.5s forwards;
+        }
+        
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(30); opacity: 0; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            animation: confettiFall 5s linear infinite;
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            margin: 12px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 250px;
+        }
+        
+        .countdown-number {
+            font-weight: bold;
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin: 0 6px;
+        }
+        
+        .countdown-label {
+            display: inline-block;
+            width: 60px;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+        }
+        
+        .controls {
+            margin-top: 30px;
+        }
+        
+        button {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icons {
+            margin-top: 30px;
+            font-size: 2rem;
+        }
+        
+        .social-icons i {
+            margin: 0 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .social-icons i:hover {
+            transform: scale(1.3);
+        }
+        
+        .fa-facebook { color: #3b5998; }
+        .fa-twitter { color: #1da1f2; }
+        .fa-instagram { color: #e4405f; }
+        .fa-whatsapp { color: #25d366; }
+        
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            bottom: -100px;
+            z-index: 2;
+            animation: balloonRise 15s linear infinite;
+        }
+        
+        .balloon::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @keyframes balloonRise {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-1000px) rotate(20deg); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .message { font-size: 1.5rem; }
+            .countdown { font-size: 1.3rem; min-width: 220px; }
+            .countdown-number { font-size: 1.5rem; }
+            .signature { font-size: 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .message { font-size: 1.3rem; }
+            .countdown { font-size: 1rem; min-width: 200px; }
+            .countdown-number { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteneur pour les feux d'artifice -->
+    <div class="fireworks-container" id="fireworks"></div>
+    
+    <!-- Conteneur pour les ballons -->
+    <div id="balloons"></div>
+    
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>
+            <span class="year-number">2</span>
+            <span class="year-number">0</span>
+            <span class="year-number">2</span>
+            <span class="year-number">6</span>
+        </h1>
+        
+        <div class="message">
+            <i class="fas fa-star"></i> Heureuse Année 2026 ! <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="countdown" id="countdown">
+            <div>
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Jours</span>
+            </div>
+            <div>
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Heures</span>
+            </div>
+            <div>
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div>
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Secondes</span>
+            </div>
+        </div>
+        
+        <div class="social-icons">
+            <i class="fab fa-facebook" title="Partager sur Facebook"></i>
+            <i class="fab fa-twitter" title="Partager sur Twitter"></i>
+            <i class="fab fa-instagram" title="Partager sur Instagram"></i>
+            <i class="fab fa-whatsapp" title="Partager sur WhatsApp"></i>
+        </div>
+        
+        <div class="controls">
+            <button id="fireworksBtn"><i class="fas fa-fire"></i> Plus de feux d'artifice</button>
+            <button id="balloonsBtn"><i class="fas fa-birthday-cake"></i> Lâcher des ballons</button>
+        </div>
+        
+        <div class="signature">
+            <i class="fas fa-signature"></i> Créé avec ❤️ par Bidene
+        </div>
+    </div>
+
+    <script>
+        // Créer des feux d'artifice aléatoires
+        function createFirework() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            
+            // Position aléatoire
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            firework.style.left = `${x}%`;
+            firework.style.top = `${y}%`;
+            
+            // Couleur aléatoire
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff9900'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.backgroundColor = color;
+            firework.style.boxShadow = `0 0 10px 2px ${color}`;
+            
+            // Durée d'animation aléatoire
+            const duration = 0.5 + Math.random() * 1;
+            firework.style.animationDuration = `${duration}s`;
+            
+            fireworksContainer.appendChild(firework);
+            
+            // Supprimer l'élément après l'animation
+            setTimeout(() => {
+                firework.remove();
+            }, duration * 1000);
+        }
+        
+        // Créer des confettis
+        function createConfetti() {
+            const body = document.querySelector('body');
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Position aléatoire
+            const x = Math.random() * 100;
+            confetti.style.left = `${x}%`;
+            
+            // Couleur aléatoire
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff9900', '#ffffff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.backgroundColor = color;
+            
+            // Taille aléatoire
+            const size = 5 + Math.random() * 15;
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            
+            // Forme aléatoire (carré ou rond)
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+            } else {
+                confetti.style.borderRadius = '0';
+            }
+            
+            // Durée et délai d'animation aléatoires
+            const duration = 3 + Math.random() * 4;
+            const delay = Math.random() * 5;
+            confetti.style.animationDuration = `${duration}s`;
+            confetti.style.animationDelay = `${delay}s`;
+            
+            body.appendChild(confetti);
+            
+            // Supprimer l'élément après l'animation
+            setTimeout(() => {
+                confetti.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // Créer des ballons
+        function createBalloon() {
+            const balloonsContainer = document.getElementById('balloons');
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            // Position de départ aléatoire
+            const x = Math.random() * 100;
+            balloon.style.left = `${x}%`;
+            
+            // Couleur aléatoire
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffd166', '#06d6a0', '#ff8e8e', '#118ab2', '#ef476f'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.backgroundColor = color;
+            
+            // Taille aléatoire
+            const size = 40 + Math.random() * 50;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size * 1.3}px`;
+            
+            // Délai et durée d'animation aléatoires
+            const delay = Math.random() * 5;
+            const duration = 10 + Math.random() * 10;
+            balloon.style.animationDelay = `${delay}s`;
+            balloon.style.animationDuration = `${duration}s`;
+            
+            balloonsContainer.appendChild(balloon);
+            
+            // Supprimer l'élément après l'animation
+            setTimeout(() => {
+                balloon.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // Compte à rebours pour la nouvelle année
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let targetYear = currentYear + 1;
+            
+            // Si nous sommes après le 1er janvier, cibler l'année prochaine
+            if (now.getMonth() === 0 && now.getDate() === 1) {
+                // Nous sommes le 1er janvier, donc montrer le compte à rebours pour l'année suivante
+                targetYear = currentYear + 1;
+            }
+            
+            const targetDate = new Date(`January 1, ${targetYear} 00:00:00`);
+            const timeDiff = targetDate - now;
+            
+            // Calculer les jours, heures, minutes, secondes
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            
+            // Mettre à jour l'affichage
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            // Si nous atteignons la nouvelle année
+            if (timeDiff <= 0) {
+                document.getElementById('countdown').innerHTML = "<div style='font-size: 2.5rem; color: #ffd700;'>🎉 BONNE ANNÉE 2026 ! 🎉</div>";
+            }
+        }
+        
+        // Gestionnaires d'événements pour les boutons
+        document.getElementById('fireworksBtn').addEventListener('click', () => {
+            // Créer plusieurs feux d'artifice
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createFirework(), i * 100);
+            }
+        });
+        
+        document.getElementById('balloonsBtn').addEventListener('click', () => {
+            // Créer plusieurs ballons
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createBalloon(), i * 200);
+            }
+        });
+        
+        // Gestionnaires pour les icônes sociales
+        const socialIcons = document.querySelectorAll('.social-icons i');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const platform = icon.classList[1].split('-')[1];
+                alert(`Partager les vœux de Nouvel An 2026 sur ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
+                
+                // Effet visuel
+                icon.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+        
+        // Initialisation
+        function init() {
+            // Créer des feux d'artifice initiaux
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createFirework(), i * 300);
+            }
+            
+            // Créer des confettis initiaux
+            for (let i = 0; i < 50; i++) {
+                createConfetti();
+            }
+            
+            // Créer quelques ballons initiaux
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => createBalloon(), i * 500);
+            }
+            
+            // Mettre à jour le compte à rebours
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Ajouter des feux d'artifice périodiques
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createFirework();
+                }
+            }, 800);
+            
+            // Ajouter des confettis périodiques
+            setInterval(() => {
+                if (Math.random() > 0.8) {
+                    createConfetti();
+                }
+            }, 300);
+        }
+        
+        // Démarrer l'animation lorsque la page est chargée
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
