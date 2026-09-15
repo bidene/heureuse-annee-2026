@@ -23,11 +23,27 @@
             position: relative;
             color: white;
         }
+
+        body.light-theme {
+            background: linear-gradient(135deg, #f7d794 0%, #f5b7b1 45%, #aed6f1 100%);
+            color: #1f2937;
+        }
+
+        body.light-theme .container {
+            background-color: rgba(255, 255, 255, 0.55);
+            box-shadow: 0 0 50px rgba(31, 41, 55, 0.25);
+        }
+
+        body.light-theme .message,
+        body.light-theme .clock-label,
+        body.light-theme .current-date {
+            color: #1f2937;
+        }
         
         .container {
             text-align: center;
             z-index: 10;
-            padding: 30px;
+            padding: 22px;
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
             backdrop-filter: blur(10px);
@@ -42,7 +58,7 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             margin-bottom: 8px;
             text-shadow: 0 0 15px #ffd700, 0 0 20px #ff9900;
             letter-spacing: 4px;
@@ -70,7 +86,7 @@
         }
         
         .message {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             margin: 20px 0;
             color: #fff;
             text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
@@ -83,7 +99,7 @@
         }
         
         .signature {
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin-top: 25px;
             padding: 10px 20px;
             background: linear-gradient(to right, #2c3e50, #34495e);
@@ -135,7 +151,7 @@
         }
         
         .countdown {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin: 12px 0;
             padding: 10px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -147,7 +163,7 @@
         .countdown-number {
             font-weight: bold;
             color: #ffd700;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             margin: 0 6px;
         }
         
@@ -156,6 +172,77 @@
             width: 60px;
             font-size: 0.8rem;
             color: #bdc3c7;
+        }
+
+        .digital-clock {
+            margin: 18px auto;
+            padding: 12px 24px;
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.35);
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            font-size: 2.1rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+        }
+
+        .clock-label {
+            display: block;
+            margin-top: 5px;
+            color: #ecf0f1;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .current-date {
+            margin-top: 8px;
+            color: #ffffff;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .timezone {
+            display: block;
+            margin-top: 5px;
+            color: #bdc3c7;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .personal-message {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .personal-message input {
+            width: min(260px, 80vw);
+            padding: 10px 14px;
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .extra-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .extra-controls button,
+        .personal-message button {
+            margin: 0;
+            padding: 9px 14px;
+            font-size: 0.9rem;
         }
         
         .controls {
@@ -169,7 +256,7 @@
             padding: 10px 20px;
             margin: 0 10px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -182,7 +269,7 @@
         
         .social-icons {
             margin-top: 30px;
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
         
         .social-icons i {
@@ -228,18 +315,20 @@
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .message { font-size: 1.5rem; }
-            .countdown { font-size: 1.3rem; min-width: 220px; }
-            .countdown-number { font-size: 1.5rem; }
-            .signature { font-size: 1rem; }
+            h1 { font-size: 2.4rem; }
+            .message { font-size: 1.2rem; }
+            .digital-clock { font-size: 1.8rem; }
+            .countdown { font-size: 1rem; min-width: 220px; }
+            .countdown-number { font-size: 1.25rem; }
+            .signature { font-size: 0.85rem; }
         }
         
         @media (max-width: 480px) {
-            h1 { font-size: 2.2rem; }
-            .message { font-size: 1.3rem; }
-            .countdown { font-size: 1rem; min-width: 200px; }
-            .countdown-number { font-size: 1.3rem; }
+            h1 { font-size: 2rem; }
+            .message { font-size: 1.05rem; }
+            .digital-clock { font-size: 1.5rem; }
+            .countdown { font-size: 0.9rem; min-width: 200px; }
+            .countdown-number { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -261,6 +350,13 @@
         
         <div class="message">
             <i class="fas fa-star"></i> Heureuse Année 2026 ! <i class="fas fa-star"></i>
+        </div>
+
+        <div class="digital-clock" id="digitalClock">
+            00:00:00
+            <span class="clock-label">HEURE ACTUELLE</span>
+            <span class="current-date" id="currentDate">Date actuelle</span>
+            <span class="timezone" id="timezone">Fuseau horaire</span>
         </div>
         
         <div class="countdown" id="countdown">
@@ -292,6 +388,17 @@
         <div class="controls">
             <button id="fireworksBtn"><i class="fas fa-fire"></i> Plus de feux d'artifice</button>
             <button id="balloonsBtn"><i class="fas fa-birthday-cake"></i> Lâcher des ballons</button>
+        </div>
+
+        <div class="personal-message">
+            <input id="nameInput" type="text" maxlength="30" placeholder="Ton prénom">
+            <button id="messageBtn"><i class="fas fa-pen"></i> Personnaliser</button>
+        </div>
+
+        <div class="extra-controls">
+            <button id="themeBtn"><i class="fas fa-sun"></i> Thème clair</button>
+            <button id="musicBtn"><i class="fas fa-music"></i> Activer la musique</button>
+            <button id="shareBtn"><i class="fas fa-share-alt"></i> Partager</button>
         </div>
         
         <div class="signature">
@@ -437,6 +544,92 @@
                 document.getElementById('countdown').innerHTML = "<div style='font-size: 2.5rem; color: #ffd700;'>🎉 BONNE ANNÉE 2026 ! 🎉</div>";
             }
         }
+
+        // Mettre à jour l'heure numérique
+        function updateDigitalClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const clock = document.getElementById('digitalClock');
+            clock.firstChild.textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            document.getElementById('timezone').textContent = `Fuseau : ${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
+        }
+
+        // Personnaliser le message d'accueil
+        document.getElementById('messageBtn').addEventListener('click', () => {
+            const name = document.getElementById('nameInput').value.trim();
+            const message = document.querySelector('.message');
+            message.innerHTML = name
+                ? `<i class="fas fa-star"></i> Heureuse Année 2026, ${name} ! <i class="fas fa-star"></i>`
+                : '<i class="fas fa-star"></i> Heureuse Année 2026 ! <i class="fas fa-star"></i>';
+        });
+
+        // Changer de thème
+        document.getElementById('themeBtn').addEventListener('click', (event) => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            event.currentTarget.innerHTML = isLight
+                ? '<i class="fas fa-moon"></i> Thème sombre'
+                : '<i class="fas fa-sun"></i> Thème clair';
+        });
+
+        // Créer une petite mélodie avec l'audio du navigateur
+        let audioContext;
+        let musicTimer;
+        let musicPlaying = false;
+        const notes = [261.63, 329.63, 392, 523.25];
+
+        function playNote(frequency) {
+            audioContext = audioContext || new AudioContext();
+            const oscillator = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.35);
+            oscillator.connect(gain);
+            gain.connect(audioContext.destination);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.35);
+        }
+
+        document.getElementById('musicBtn').addEventListener('click', (event) => {
+            musicPlaying = !musicPlaying;
+            if (musicPlaying) {
+                let noteIndex = 0;
+                playNote(notes[noteIndex]);
+                musicTimer = setInterval(() => {
+                    noteIndex = (noteIndex + 1) % notes.length;
+                    playNote(notes[noteIndex]);
+                }, 500);
+                event.currentTarget.innerHTML = '<i class="fas fa-volume-mute"></i> Couper la musique';
+            } else {
+                clearInterval(musicTimer);
+                event.currentTarget.innerHTML = '<i class="fas fa-music"></i> Activer la musique';
+            }
+        });
+
+        // Partager la page ou copier son adresse
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            const shareData = {
+                title: 'Heureuse Année 2026',
+                text: 'Mes meilleurs vœux pour la nouvelle année !',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                alert('Lien copié !');
+            }
+        });
         
         // Gestionnaires d'événements pour les boutons
         document.getElementById('fireworksBtn').addEventListener('click', () => {
@@ -488,6 +681,10 @@
             // Mettre à jour le compte à rebours
             updateCountdown();
             setInterval(updateCountdown, 1000);
+
+            // Mettre à jour l'horloge numérique
+            updateDigitalClock();
+            setInterval(updateDigitalClock, 1000);
             
             // Ajouter des feux d'artifice périodiques
             setInterval(() => {
